@@ -1,1 +1,3 @@
-export { default as greeting } from './greeting';
+import greeting from "./greeting";
+
+export const functions = { greeting }

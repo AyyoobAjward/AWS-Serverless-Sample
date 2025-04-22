@@ -1,9 +1,10 @@
 import { successResponse } from "@libs/api-gateway"
+import { middyfy } from "@libs/lambda";
 
-const greeting = (event) => {
+const greeting = () => {
     return successResponse({
-        message: "hello from AWS-Serverless Sample API"
+        message: "Hello World"
     })
 }
 
-export const main = greeting;
+export const main = middyfy(greeting);
