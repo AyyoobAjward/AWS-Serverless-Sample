@@ -1,3 +1,10 @@
-import greeting from "./greeting";
+import { createNote, deleteNote, getAllNotes, updateNote } from "./notes";
 
-export const functions = { greeting }
+const functions = { 
+    getAllNotes,
+    createNote,
+    updateNote,
+    deleteNote
+}
+
+export default functions;
