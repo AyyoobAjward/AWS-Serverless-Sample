@@ -5,16 +5,16 @@ import { APIGatewayEvent } from "aws-lambda";
 
 const updateNote = async (event: APIGatewayEvent) => {
     try {
-        if(!event.pathParameters.id) throw clientErrorResponse({message: 'no id found'});
-        if(!event.pathParameters.body) throw clientErrorResponse({message: 'update data not found'});
+        if(!event.pathParameters.id) return clientErrorResponse({message: 'no id found'});
+        if(!event.pathParameters.body) return clientErrorResponse({message: 'update data not found'});
 
-        const allNotes = await updateNoteInDB(event.pathParameters.id, event.pathParameters.body)
+        const updatedNote = await updateNoteInDB(event.pathParameters.id, event.pathParameters.body)
         return successResponse({
             message: 'note updated successfully!',
-            notes: {allNotes}
+            notes: {updatedNote}
         })
     } catch(error) {
-        serverErrorResponse({
+        return serverErrorResponse({
             message: `error while updating the note, ${error}`
         })
     }

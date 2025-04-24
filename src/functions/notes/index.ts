@@ -18,7 +18,7 @@ const getAllNotes = {
 const createNote = {
     handler: `${handlerPath(__dirname)}/createNote.main`,
     name: '${self:service}-{self:provider.stage}-createNote',
-    description: 'get all notes',
+    description: 'create a note',
     events: [
         {
             http: {
@@ -37,7 +37,7 @@ const createNote = {
 const deleteNote = {
     handler: `${handlerPath(__dirname)}/deleteNote.main`,
     name: '${self:service}-{self:provider.stage}-deleteNote',
-    description: 'get all notes',
+    description: 'delete note by id',
     events: [
         {
             http: {
@@ -51,7 +51,7 @@ const deleteNote = {
 const updateNote = {
     handler: `${handlerPath(__dirname)}/updateNote.main`,
     name: '${self:service}-{self:provider.stage}-updateNote',
-    description: 'get all notes',
+    description: 'update note by id',
     events: [
         {
             http: {

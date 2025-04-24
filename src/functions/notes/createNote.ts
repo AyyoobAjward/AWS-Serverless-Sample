@@ -1,17 +1,18 @@
 import { middyfy } from "@libs/lambda";
-import { serverErrorResponse, successResponse } from "@libs/responses";
+import { clientErrorResponse, serverErrorResponse, successResponse } from "@libs/responses";
 import { createNoteInDB } from "./notesService";
 import { APIGatewayEvent } from "aws-lambda";
 
 const createNote = async (event: APIGatewayEvent) => {
     try {
-        const allNotes = await createNoteInDB(event.body)
+        if(!event.body) return clientErrorResponse({message: 'no create body found'})
+        const createdNote = await createNoteInDB(event.body)
         return successResponse({
             message: 'note created successfully!',
-            notes: {allNotes}
+            notes: {createdNote}
         })
     } catch(error) {
-        serverErrorResponse({
+        return serverErrorResponse({
             message: `error while creating the note, ${error}`
         })
     }

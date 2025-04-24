@@ -32,7 +32,7 @@ const createNoteInDB = async (note: any): Promise<any> => {
   };
   
 
-  const updateNoteInDB = async (id: string, updates: any): Promise<any> => {
+  const updateNoteInDB = async (id: any, updates: any): Promise<any> => {
     try {
       const updateCommand = new UpdateCommand({
         TableName: "notes",
@@ -58,11 +58,12 @@ const createNoteInDB = async (note: any): Promise<any> => {
   };
   
 
-  const deleteNoteInDB = async (id: string): Promise<any> => {
+  const deleteNoteInDB = async (id: any): Promise<any> => {
+    console.log('id:', id);
     try {
       const deleteCommand = new DeleteCommand({
         TableName: "notes",
-        Key: { id },
+        Key: { id: id }
       });
   
       await docClient.send(deleteCommand);

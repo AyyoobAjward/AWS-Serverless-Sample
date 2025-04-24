@@ -5,16 +5,18 @@ import { APIGatewayEvent } from "aws-lambda";
 
 const deleteNote = async (event: APIGatewayEvent) => {
     try {
-        if(event.pathParameters.id) throw clientErrorResponse({
+        if(!event.pathParameters.id) 
+        return clientErrorResponse({
             message: 'no id found'
         })
-        const allNotes = await deleteNoteInDB(event.pathParameters.id)
+
+        const deletedNote = await deleteNoteInDB(event.pathParameters.id)
         return successResponse({
             message: 'note deleted successfully!',
-            notes: {allNotes}
+            notes: { deletedNote }
         })
     } catch(error) {
-        serverErrorResponse({
+        return serverErrorResponse({
             message: `error while deleting the note, ${error}`
         })
     }
