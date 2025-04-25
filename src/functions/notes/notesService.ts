@@ -20,7 +20,7 @@ const createNoteInDB = async (note: any): Promise<any> => {
     try {
       const putCommand = new PutCommand({
         TableName: "notes",
-        Item: note, // must include primary key (e.g., id)
+        Item: note,
       });
   
       await docClient.send(putCommand);
@@ -36,7 +36,7 @@ const createNoteInDB = async (note: any): Promise<any> => {
     try {
       const updateCommand = new UpdateCommand({
         TableName: "notes",
-        Key: { id }, // adjust key name if yours is different
+        Key: { id }, 
         UpdateExpression: "set #title = :title, #content = :content",
         ExpressionAttributeNames: {
           "#title": "title",

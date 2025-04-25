@@ -3,7 +3,7 @@ import schema from "./schema";
 
 const getAllNotes = {
     handler: `${handlerPath(__dirname)}/getAllNotes.main`,
-    name: '${self:service}-{self:provider.stage}-getAllNotes',
+    name: '${self:service}-${self:provider.stage}-getAllNotes',
     description: 'get all notes',
     events: [
         {
@@ -17,7 +17,7 @@ const getAllNotes = {
 
 const createNote = {
     handler: `${handlerPath(__dirname)}/createNote.main`,
-    name: '${self:service}-{self:provider.stage}-createNote',
+    name: '${self:service}-${self:provider.stage}-createNote',
     description: 'create a note',
     events: [
         {
@@ -36,7 +36,7 @@ const createNote = {
 
 const deleteNote = {
     handler: `${handlerPath(__dirname)}/deleteNote.main`,
-    name: '${self:service}-{self:provider.stage}-deleteNote',
+    name: '${self:service}-${self:provider.stage}-deleteNote',
     description: 'delete note by id',
     events: [
         {
@@ -50,7 +50,7 @@ const deleteNote = {
 
 const updateNote = {
     handler: `${handlerPath(__dirname)}/updateNote.main`,
-    name: '${self:service}-{self:provider.stage}-updateNote',
+    name: '${self:service}-${self:provider.stage}-updateNote',
     description: 'update note by id',
     events: [
         {

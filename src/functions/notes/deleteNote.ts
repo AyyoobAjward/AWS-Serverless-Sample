@@ -10,7 +10,7 @@ const deleteNote = async (event: APIGatewayEvent) => {
             message: 'no id found'
         })
 
-        const deletedNote = await deleteNoteInDB(event.pathParameters.id)
+        const deletedNote = await deleteNoteInDB(event.pathParameters.id);
         return successResponse({
             message: 'note deleted successfully!',
             notes: { deletedNote }
